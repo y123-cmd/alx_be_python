@@ -3,7 +3,11 @@
 def main():
     # Prompt for a single task
     task = input("Enter your task: ")
+    
+    # Prompt for the priority level and convert it to lowercase for uniformity
     priority = input("Priority (high/medium/low): ").lower()
+    
+    # Prompt for whether the task is time-bound
     time_bound = input("Is it time-bound? (yes/no): ").lower()
 
     # Initialize the reminder message
@@ -19,7 +23,7 @@ def main():
             reminder_message = f"'{task}' is a low priority task"
         case _:
             print("Invalid priority level. Please enter high, medium, or low.")
-            return
+            return  # Exit if invalid input
 
     # Modify the reminder if the task is time-bound
     if time_bound == "yes":
@@ -28,7 +32,7 @@ def main():
         reminder_message += ". Consider completing it when you have free time."
     else:
         print("Invalid input for time-bound. Please enter yes or no.")
-        return
+        return  # Exit if invalid input
 
     # Provide the customized reminder
     print(reminder_message)
