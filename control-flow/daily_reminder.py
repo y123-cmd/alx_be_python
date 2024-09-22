@@ -1,39 +1,37 @@
+# daily_reminder.py
+
 def main():
-  """
-  This function prompts the user for a task, its priority, and time sensitivity,
-  then provides a customized reminder using conditional statements and loops.
-  """
-  # Prompt for task and store it
-  task = input("Enter your task: ")
+    # Prompt for a single task
+    task = input("Enter your task: ")
+    priority = input("Priority (high/medium/low): ").lower()
+    time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-  # Prompt for priority and store it with case-insensitive conversion
-  priority = input("Priority (high/medium/low): ").lower()
+    # Initialize the reminder message
+    reminder_message = ""
 
-  # Prompt for time sensitivity and store it with case-insensitive conversion
-  time_bound = input("Is it time-bound? (yes/no): ").lower()
+    # Process the task based on priority using Match Case
+    match priority:
+        case "high":
+            reminder_message = f"'{task}' is a high priority task"
+        case "medium":
+            reminder_message = f"'{task}' is a medium priority task"
+        case "low":
+            reminder_message = f"'{task}' is a low priority task"
+        case _:
+            print("Invalid priority level. Please enter high, medium, or low.")
+            return
 
-  # Use match case for priority levels
-  match priority:
-    case "high":
-      reminder_prefix = "**High priority!**"
-    case "medium":
-      reminder_prefix = "**Medium priority.**"
-    case "low":
-      reminder_prefix = "**Low priority.**"
-    case _:
-      print("Invalid priority level. Please enter high, medium, or low.")
-      return  # Exit the function if invalid priority
+    # Modify the reminder if the task is time-bound
+    if time_bound == "yes":
+        reminder_message += " that requires immediate attention today!"
+    elif time_bound == "no":
+        reminder_message += ". Consider completing it when you have free time."
+    else:
+        print("Invalid input for time-bound. Please enter yes or no.")
+        return
 
-  # Modify reminder based on time sensitivity (using an if statement)
-  if time_bound == "yes":
-    reminder_suffix = " This requires immediate attention today!"
-  else:
-    reminder_suffix = " Consider completing it when you have free time."
-
-  # Print the complete reminder
-  print(f"\nReminder: '{task}' is a {reminder_prefix}{reminder_suffix}")
-  print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
-  print(" Click here to tweet! ")
+    # Provide the customized reminder
+    print(reminder_message)
 
 if __name__ == "__main__":
-  main()
+    main()
