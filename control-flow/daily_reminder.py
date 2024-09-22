@@ -5,9 +5,6 @@ task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Initialize the reminder message
-reminder = f"Reminder: '{task}' is a {priority} priority task."
-
 # Match Case for priority
 match priority:
     case 'high':
@@ -25,6 +22,6 @@ if time_bound == 'yes':
 else:
     reminder += " Consider completing it when you have free time."
 
-# Print the customized reminder
+# Print the customized reminder with exact format
 print(reminder)
 
