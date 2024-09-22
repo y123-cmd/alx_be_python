@@ -8,7 +8,7 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 # Initialize the reminder message
 reminder = f"Reminder: '{task}' is a {priority} priority task."
 
-# Use match case to handle priority levels
+# Match Case for priority
 match priority:
     case 'high':
         reminder = f"Reminder: '{task}' is a high priority task."
@@ -17,7 +17,7 @@ match priority:
     case 'low':
         reminder = f"Reminder: '{task}' is a low priority task."
     case _:
-        reminder = f"Reminder: Invalid priority level for task '{task}'."
+        reminder = "Reminder: Invalid priority level."
 
 # Modify the reminder if the task is time-bound
 if time_bound == 'yes':
