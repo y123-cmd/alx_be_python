@@ -26,5 +26,6 @@ else:
     reminder += " Consider completing it when you have free time."
 
 # Print the customized reminder
+print(f"Debug Reminder: {reminder}") 
 print(reminder)
 
