@@ -1,29 +1,23 @@
+# bank_account.py
+
 class BankAccount:
-    def __init__(self, initial_balance=0):
-        self.account_balance = initial_balance  # Initialize account_balance attribute
+    def __init__(self, initial_balance=0.0):
+        self.account_balance = initial_balance
 
     def deposit(self, amount):
         if amount > 0:
             self.account_balance += amount
-            print(f"Deposited: ${amount:.1f}. New Balance: ${self.account_balance:.1f}")
-            return True
-        else:
-            print("Deposit amount must be positive.")
-            return False
+            print(f"Deposited: ${amount:.1f}")
 
     def withdraw(self, amount):
-        if amount > self.account_balance:
+        if amount > 0 and amount <= self.account_balance:
+            self.account_balance -= amount
+            print(f"Withdrew: ${amount:.1f}")
+            return True
+        else:
             print("Insufficient funds.")
             return False
-        elif amount <= 0:
-            print("Withdrawal amount must be positive.")
-            return False
-        else:
-            self.account_balance -= amount
-            print(f"Withdrew: ${amount:.1f}. New Balance: ${self.account_balance:.1f}")
-            return True
 
     def display_balance(self):
-        print(f"Current Balance: ${self.account_balance:.1f}")
-        return self.account_balance
+        print(f"Current Balance: ${self.account_balance:.2f}")
 

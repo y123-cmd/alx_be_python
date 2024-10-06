@@ -1,8 +1,10 @@
+# main-0.py
+
 import sys
 from bank_account import BankAccount
 
 def main():
-    account = BankAccount(100)  # Example starting balance
+    account = BankAccount(100)  # Starting balance
     if len(sys.argv) < 2:
         print("Usage: python main.py <command>:<amount>")
         print("Commands: deposit, withdraw, display")
@@ -14,8 +16,7 @@ def main():
     if command == "deposit" and amount is not None:
         account.deposit(amount)
     elif command == "withdraw" and amount is not None:
-        if account.withdraw(amount):
-            print(f"Withdrew: ${amount:.2f}")
+        account.withdraw(amount)
     elif command == "display":
         account.display_balance()
     else:
