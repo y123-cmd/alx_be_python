@@ -1,7 +1,8 @@
-from bank_account import BankAccount  # Import the BankAccount class
+from bank_account import BankAccount
 
 def test_bank_account():
-    account = BankAccount()
+    # Provide account_number and account_holder when creating an instance
+    account = BankAccount("123456789", "John Doe")
 
     # Check deposit
     assert account.deposit(100) == True

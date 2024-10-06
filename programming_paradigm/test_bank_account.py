@@ -1,5 +1,9 @@
+# test_bank_account.py
+
+from bank_account import BankAccount  # Ensure this matches your file structure
+
 def test_bank_account():
-    account = BankAccount(account_number='123456', account_holder='John Doe')
+    account = BankAccount('123456', 'John Doe')  # Pass required arguments
 
     # Check deposit
     assert account.deposit(100) == True
