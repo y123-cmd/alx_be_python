@@ -1,13 +1,14 @@
 class BankAccount:
-    def __init__(self, account_number, account_holder):
-        self.account_number = account_number
+    def __init__(self, account_holder, initial_balance=0.0):
         self.account_holder = account_holder
-        self.balance = 0.0
+        self.balance = initial_balance
 
     def deposit(self, amount):
-        self.balance += amount
-        print(f"Deposited: ${amount:.2f}. New Balance: ${self.balance:.2f}")
-        return True
+        if amount > 0:
+            self.balance += amount
+            print(f'Deposited: ${amount:.2f}. New Balance: ${self.balance:.2f}')
+            return amount
+        return 0
 
     def withdraw(self, amount):
         if amount > self.balance:
@@ -15,10 +16,10 @@ class BankAccount:
             return False
         else:
             self.balance -= amount
-            print(f"Withdrew: ${amount:.2f}. New Balance: ${self.balance:.2f}")
+            print(f'Withdrew: ${amount:.2f}. New Balance: ${self.balance:.2f}')
             return True
 
     def display_balance(self):
-        print(f"Current Balance: {self.balance:.2f}")  # Correctly format the output
-        return self.balance  # Returning the balance if needed
+        print(f'Current Balance: ${self.balance:.2f}')
+        return self.balance
 
