@@ -1,7 +1,7 @@
 class BankAccount:
-    def __init__(self, account_number, account_holder):
+    def __init__(self, account_number, owner):
         self.account_number = account_number
-        self.account_holder = account_holder
+        self.owner = owner
         self.balance = 0.0
 
     def deposit(self, amount):
@@ -16,11 +16,9 @@ class BankAccount:
             self.balance -= amount
             print(f"Withdrew: ${amount:.2f}. New Balance: ${self.balance:.2f}")
             return True
-        else:
-            print("Insufficient funds.")
-            return False
+        print("Insufficient funds.")
+        return False
 
     def display_balance(self):
-        print(f"Current Balance: ${self.balance:.2f}")
-        return self.balance
+        return self.balance  # Change this to return the balance
 

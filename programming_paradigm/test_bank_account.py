@@ -1,23 +1,18 @@
-# test_bank_account.py
-
-from bank_account import BankAccount  # Import the BankAccount class
+from bank_account import BankAccount  # Ensure this line is present
 
 def test_bank_account():
     account = BankAccount('123456', 'John Doe')
-
+    
     # Test deposit
-    deposit_result = account.deposit(100)
-    assert deposit_result == True
-    assert account.display_balance() == 100.0
-
+    assert account.deposit(100) == True
+    assert account.display_balance() == 100.0  # This should now pass
+    
     # Test withdrawal
-    withdraw_result = account.withdraw(50)
-    assert withdraw_result == True
+    assert account.withdraw(50) == True
     assert account.display_balance() == 50.0
 
     # Test insufficient funds
-    withdraw_result = account.withdraw(100)
-    assert withdraw_result == False
+    assert account.withdraw(100) == False
     assert account.display_balance() == 50.0
 
     print("All tests passed!")
