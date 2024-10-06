@@ -1,4 +1,5 @@
 # main-0.py
+# This is a comment added for testing the commit process
 
 import sys
 from bank_account import BankAccount
