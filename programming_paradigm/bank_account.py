@@ -11,10 +11,12 @@ class BankAccount:
         if os.path.exists("balance.txt"):
             with open("balance.txt", "r") as f:
                 self.account_balance = float(f.read().strip())
+                print(f"Loaded balance: ${self.account_balance:.2f}")  # Debugging line
 
     def save_balance(self):
         with open("balance.txt", "w") as f:
             f.write(str(self.account_balance))
+            print(f"Saved balance: ${self.account_balance:.2f}")  # Debugging line
 
     def deposit(self, amount):
         if amount > 0:
