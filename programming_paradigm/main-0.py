@@ -1,11 +1,12 @@
+# main-0.py
+
 import sys
 from bank_account import BankAccount
 
 def main():
-    account = BankAccount()  # Create a BankAccount instance
-
+    account = BankAccount()  # Load existing balance from file
     if len(sys.argv) < 2:
-        print("Usage: python main.py <command>:<amount>")
+        print("Usage: python main-0.py <command>:<amount>")
         print("Commands: deposit, withdraw, display")
         sys.exit(1)
 
@@ -13,10 +14,15 @@ def main():
     amount = float(params[0]) if params else None
 
     if command == "deposit" and amount is not None:
-        account.deposit(amount)
+        if account.deposit(amount):
+            print(f"Deposited: ${amount:.2f}")
+        else:
+            print("Invalid deposit amount.")
     elif command == "withdraw" and amount is not None:
         if account.withdraw(amount):
-            pass  # The withdraw method already prints the output
+            print(f"Withdrew: ${amount:.2f}")
+        else:
+            print("Insufficient funds.")
     elif command == "display":
         account.display_balance()
     else:
@@ -24,4 +30,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
