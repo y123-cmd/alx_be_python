@@ -14,11 +14,11 @@ def main():
     amount = float(params[0]) if params else None
 
     if command == "deposit" and amount is not None:
-        account.deposit(amount)
+        print(account.deposit(amount))  # Print the returned message
     elif command == "withdraw" and amount is not None:
-        account.withdraw(amount)
+        print(account.withdraw(amount))  # Print the returned message
     elif command == "display":
-        account.display_balance()
+        print(account.display_balance())  # Print the returned balance
     else:
         print("Invalid command.")
 

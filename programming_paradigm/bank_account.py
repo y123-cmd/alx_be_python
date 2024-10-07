@@ -7,17 +7,15 @@ class BankAccount:
     def deposit(self, amount):
         if amount > 0:
             self.account_balance += amount
-            print(f"Deposited: ${amount:.1f}")
+            return f"Deposited: ${amount:.1f}"  # Return the message instead of printing it
 
     def withdraw(self, amount):
         if amount > 0 and amount <= self.account_balance:
             self.account_balance -= amount
-            print(f"Withdrew: ${amount:.1f}")
-            return True
+            return f"Withdrew: ${amount:.1f}"  # Return the message instead of printing it
         else:
-            print("Insufficient funds.")
-            return False
+            return "Insufficient funds."  # Return the message instead of printing it
 
     def display_balance(self):
-        print(f"Current Balance: ${self.account_balance:.2f}")
+        return f"Current Balance: ${self.account_balance:.2f}"  # Return the balance instead of printing it
 
