@@ -3,14 +3,15 @@
 import os
 
 class BankAccount:
-    def __init__(self, initial_balance=0):
-        self.account_balance = initial_balance
-        self.load_balance()
+    def __init__(self):
+        self.load_balance()  # Load existing balance from file or initialize
 
     def load_balance(self):
         if os.path.exists("balance.txt"):
             with open("balance.txt", "r") as f:
                 self.account_balance = float(f.read().strip())
+        else:
+            self.account_balance = 250.0  # Set a default starting balance
 
     def save_balance(self):
         with open("balance.txt", "w") as f:
@@ -32,3 +33,4 @@ class BankAccount:
 
     def display_balance(self):
         print(f"Current Balance: ${self.account_balance:.2f}")
+
