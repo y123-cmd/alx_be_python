@@ -1,22 +1,25 @@
-from bank_account import BankAccount  # Ensure this line is present
+import unittest
+from bank_account import BankAccount
 
-def test_bank_account():
-    account = BankAccount('123456', 'John Doe')
-    
-    # Test deposit
-    assert account.deposit(100) == True
-    assert account.display_balance() == 100.0  # This should now pass
-    
-    # Test withdrawal
-    assert account.withdraw(50) == True
-    assert account.display_balance() == 50.0
+class TestBankAccount(unittest.TestCase):
+    def setUp(self):
+        self.account = BankAccount(250.0)  # Starting balance
 
-    # Test insufficient funds
-    assert account.withdraw(100) == False
-    assert account.display_balance() == 50.0
+    def test_withdrawal(self):
+        self.account.withdraw(50.0)
+        self.assertEqual(self.account.balance, 200.0)  # Ensure balance is updated
+        self.account.display_balance()  # Should print "Current Balance: $200.00"
 
-    print("All tests passed!")
+    def test_withdraw_more_than_balance(self):
+        self.account.withdraw(300.0)
+        self.assertEqual(self.account.balance, 250.0)  # Balance should remain unchanged
+        self.account.display_balance()  # Should print "Current Balance: $250.00"
+
+    def test_withdraw_negative_amount(self):
+        self.account.withdraw(-50.0)  # Testing withdrawal with negative amount
+        self.assertEqual(self.account.balance, 250.0)  # Balance should remain unchanged
+        self.account.display_balance()  # Should print "Current Balance: $250.00"
 
 if __name__ == "__main__":
-    test_bank_account()
+    unittest.main()
 
