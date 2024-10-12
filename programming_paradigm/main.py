@@ -1,32 +1,32 @@
-from library_management import Book, Library
+# main-0.py
+
+import sys
+from bank_account import BankAccount
 
 def main():
-    # Setup a small library
-    library = Library()
-    library.add_book(Book("Brave New World", "Aldous Huxley"))
-    library.add_book(Book("1984", "George Orwell"))
+    account = BankAccount()  # Load existing balance from file
+    if len(sys.argv) < 2:
+        print("Usage: python main-0.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        sys.exit(1)
 
-    # Initial list of available books
-    print("Available books after setup:")
-    library.list_available_books()
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
 
-    # Simulate checking out a book
-    if library.check_out_book("1984"):
-        print("\nChecked out '1984'.")
+    if command == "deposit" and amount is not None:
+        if account.deposit(amount):
+            print(f"Deposited: ${amount:.2f}")
+        else:
+            print("Invalid deposit amount.")
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount:.2f}")
+        else:
+            print("Insufficient funds.")
+    elif command == "display":
+        account.display_balance()
     else:
-        print("\n'1984' is not available for checkout.")
-
-    print("\nAvailable books after checking out '1984':")
-    library.list_available_books()
-
-    # Simulate returning a book
-    if library.return_book("1984"):
-        print("\nReturned '1984'.")
-    else:
-        print("\n'1984' was not checked out.")
-
-    print("\nAvailable books after returning '1984':")
-    library.list_available_books()
+        print("Invalid command.")
 
 if __name__ == "__main__":
     main()
